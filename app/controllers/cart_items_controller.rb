@@ -22,9 +22,9 @@ before_action :authenticate_customer!
    #end
   #end
    end
-  @cart_item.save
-  redirect_to cart_items_path
-  end
+   @cart_item.save
+   redirect_to cart_items_path
+   end
 
 
   def update
