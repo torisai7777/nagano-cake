@@ -21,10 +21,10 @@ before_action :authenticate_customer!
      #@cart_item.delete
    #end
   #end
-  end
+   end
   @cart_item.save
   redirect_to cart_items_path
-end
+  end
 
 
   def update
