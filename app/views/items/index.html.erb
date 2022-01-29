@@ -1,0 +1,40 @@
+<div class="container my-5">
+  <div class="row">
+	  <div class="col-2">
+
+      <div class="row d-flex aline-items-center">
+		    <strong class="red-border px-3 pb-1">ジャンル検索</strong>
+	    </div>
+      <% @genres.each do |genre| %>
+		    <%= link_to items_path(genre_id: genre.id) do %>
+			    <div class="row mx-auto mt-3">
+			      <span class="brown-border text-center"><%= genre.name %></span>
+			    </div>
+		    <% end %>
+	    <% end %>
+
+  </div>
+
+  <div class="col-9">
+
+    <div class="row">
+
+    <% if @genre.present?  %>
+      <h2 class="red-border px-3 pb-1"><%=@genre.name %>一覧</h2>
+     <%else%>
+     <h2 class="red-border px-3 pb-1">商品一覧</h2>
+     <%end%>
+     <% @items.each do |item| %>
+        <div class="col-3 mt-3"> <!--ひとつのブロックをラップしてカラムを指定する-->
+		      <%= link_to item_path(item) do %><!--それをeach文で回す-->
+		        <%= attachment_image_tag item, :image, size: "150x150", fallback: "no_image.jpg", class: 'rounded' %>
+		      <% end %><br>
+		      <span class="text-muted"><%= item.genre.name %></span><br>
+		      <strong class="red-border"><%=link_to item.name ,item_path(item.id) %></strong><br>
+		      <span class="ml-auto"><%= (item.price * 1.1).floor %>円</span><br>
+        </div>
+      <% end %>
+	  </div>
+	</div>
+</div>
+</div>
