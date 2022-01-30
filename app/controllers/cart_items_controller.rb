@@ -9,10 +9,10 @@ before_action :authenticate_customer!
    @cart_item = CartItem.new(cart_item_params)
    @cart_item.customer_id = current_customer.id
    @cart_items=current_customer.cart_items.all
-   @item = @cart_items.find_by(params[:item_id])
-   if @item.present?
-    new_quantity = @item.amount + @cart_item.amount
-    @item.update_attribute(:amount, new_quantity)
+   if nil != current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id])
+  @cart_item_u = current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id]) #カート内のすでにある商品の情報取得
+  new_amount = @cart_item.amount + @cart_item_u.amount
+  @cart_item_u.update_attribute(:amount, new_amount)
     @cart_item.delete
    #@cart_items.each do |cart_item|
      #if cart_item.item_id==@cart_item.item_id

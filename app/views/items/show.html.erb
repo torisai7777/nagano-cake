@@ -33,7 +33,7 @@
         <div class="row">
           <%= form_with model:@cart_item, local:true do |f| %>
             <%= f.select :amount, *[1..100] , placeholder: "個数選択" %><span>個</span>
-            <%= f.hidden_field :item_id, :value => @item.id %>
+            <%= f.hidden_field :item_id, :value => @item.id.to_s %>
             <%= f.submit "カートに入れる", class: "btn btn-outline-danger" %>
       　　<% end %>
         </div>
