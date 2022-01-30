@@ -23,7 +23,7 @@ before_action :authenticate_customer!
   #end
    end
    @cart_item.save
-   redirect_to cart_items_path
+    redirect_to cart_items_path
    end
 
 
